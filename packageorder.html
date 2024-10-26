@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Tickets Booking</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .bus-icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .travelling-aid {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .form-control {
+            margin-bottom: 10px;
+        }
+
+        .combo-boxes {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .combo-boxes input {
+            width: 40%;
+        }
+
+        .save-btn {
+            margin-top: 20px;
+        }
+
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<header class="navbar navbar-dark bg-dark">
+    <div class="container">
+        <img src="bus icon.webp" alt="Bus Icon" class="bus-icon">
+        <span class="text-white travelling-aid">Voyage Facile</span>
+        <h1 class="text-white"></h1>
+    </div>
+</header>
+
+<div class="container mt-3">
+    <form action="save_booking.php" method="POST" onsubmit="return validateForm()">
+        <div class="form-group">
+            <label for="fullName">Full Name:</label>
+            <input type="text" class="form-control" id="fullName" name="fullName">
+            <div id="fullNameError" class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <label for="mobileNumber">Mobile Number:</label>
+            <input type="text" class="form-control" id="mobileNumber" name="mobileNumber">
+            <div id="mobileNumberError" class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <label for="nationality">Nationality:</label>
+            <input type="text" class="form-control" id="nationality" name="nationality">
+            <div id="nationalityError" class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <label for="package">Package you want:</label>
+            <input type="text" class="form-control" id="package" name="package">
+            <div id="packageError" class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <label for="travelDate">Date (when you are hoping to travel):</label>
+            <input type="date" class="form-control" id="travelDate" name="travelDate">
+            <div id="travelDateError" class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <label for="numberOfAdults">Number of Adults:</label>
+            <input type="number" class="form-control" id="numberOfAdults" name="numberOfAdults" min="0">
+            <div id="numberOfAdultsError" class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <label for="numberOfChildren">Number of Children:</label>
+            <input type="number" class="form-control" id="numberOfChildren" name="numberOfChildren" min="0">
+            <div id="numberOfChildrenError" class="error-message"></div>
+        </div>
+        <button type="submit" class="btn btn-primary save-btn">Save</button>
+        <button type="button" class="btn btn-secondary" onclick="window.history.back()">Back</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function validateForm() {
+        var fullName = document.getElementById('fullName').value;
+        var mobileNumber = document.getElementById('mobileNumber').value;
+        var nationality = document.getElementById('nationality').value;
+        var package = document.getElementById('package').value;
+        var travelDate = document.getElementById('travelDate').value;
+        var numberOfAdults = document.getElementById('numberOfAdults').value;
+        var numberOfChildren = document.getElementById('numberOfChildren').value;
+        var isValid = true;
+
+
+        document.getElementById('fullNameError').textContent = '';
+        document.getElementById('mobileNumberError').textContent = '';
+        document.getElementById('nationalityError').textContent = '';
+        document.getElementById('packageError').textContent = '';
+        document.getElementById('travelDateError').textContent = '';
+        document.getElementById('numberOfAdultsError').textContent = '';
+        document.getElementById('numberOfChildrenError').textContent = '';
+
+        
+        if (fullName.trim() === '') {
+            document.getElementById('fullNameError').textContent = 'Full name is required';
+            isValid = false;
+        }
+
+       
+        if (mobileNumber.trim() === '') {
+            document.getElementById('mobileNumberError').textContent = 'Mobile number is required';
+            isValid = false;
+        } else if (!/^\d{10}$/.test(mobileNumber.trim())) {
+            document.getElementById('mobileNumberError').textContent = 'Mobile number must be 10 digits';
+            isValid = false;
+        }
+
+        
+        if (nationality.trim() === '') {
+            document.getElementById('nationalityError').textContent = 'Nationality is required';
+            isValid = false;
+        }
+
+      
+        if (package.trim() === '') {
+            document.getElementById('packageError').textContent = 'Package is required';
+            isValid = false;
+        }
+
+      
+        if (travelDate.trim() === '') {
+            document.getElementById('travelDateError').textContent = 'Travel date is required';
+            isValid = false;
+        }
+
+        
+        if (numberOfAdults < 0) {
+            document.getElementById('numberOfAdultsError').textContent = 'Number of adults must be non-negative';
+            isValid = false;
+        }
+
+        
+        if (numberOfChildren < 0) {
+            document.getElementById('numberOfChildrenError').textContent = 'Number of children must be non-negative';
+            isValid = false;
+        }
+
+        return isValid;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Second Page</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+        .bus-icon {
+            width: 50px; 
+            height: 50px;
+            margin-right: 10px;
+        }
+        .travelling-aid {
+            font-size: 2em; 
+            font-weight: bold;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.8em;
+            margin-top: 5px;
+        }
+  </style>
+</head>
+<body>
+
+    <header class="navbar navbar-dark bg-dark">
+        <div class="container">
+             <img src="bus icon.webp" alt="Bus Icon" class="bus-icon">
+             <span class="text-white travelling-aid">Voyage Facile</span>
+             <h1 class="text-white"></h1>
+        </div>
+    </header>
+
+  <div class="container mt-3">
+    
+    <h2>Reservation</h2>
+    <form action="save_R.php" method="POST" onsubmit="return validateForm()">
+      <div class="form-group">
+  <label for="busRoute">Bus Name:</label>
+  <select class="form-control" id="busRoute" name="busRoute">
+    <option value="" disabled selected>Select Bus Name</option> <!-- Watermark option -->
+    <!-- Options will be populated dynamically -->
+  </select>
+  <div id="busRouteError" class="error-message"></div>
+</div>
+
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="date" class="form-control" id="date" name="date">
+        <div id="dateError" class="error-message"></div>
+      </div>
+      
+      <div class="form-group">
+        <label for="priority">Number of seats you want:</label>
+        <select class="form-control" id="priority" name="priority">
+          <option value="" disabled selected>Select Number of Seats</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="47">47</option>
+        </select>
+        <div id="priorityError" class="error-message"></div>
+      </div>
+      
+      <button type="submit" class="btn btn-primary mr-2">Save</button>
+      <button type="button" onclick="window.location.href='delete_reservation.html'" class="btn btn-danger mr-2">Delete Reservation</button>
+      <a href="businfo.php" class="btn btn-secondary">Back</a>
+
+    </form>
+  </div>
+
+<script>
+    // Function to validate the reservation form
+    function validateForm() {
+        // Reset previous error messages
+        document.getElementById('busRouteError').textContent = '';
+        document.getElementById('dateError').textContent = '';
+        document.getElementById('priorityError').textContent = '';
+
+        // Get form values
+        var busRoute = document.getElementById('busRoute').value;
+        var date = document.getElementById('date').value;
+        var priority = document.getElementById('priority').value;
+
+        // Flag to track if form is valid
+        var isValid = true;
+
+        // Validate bus route
+        if (busRoute === '') {
+            document.getElementById('busRouteError').textContent = 'Please select a bus route';
+            isValid = false;
+        }
+
+        // Validate date
+        if (date === '') {
+            document.getElementById('dateError').textContent = 'Please select a date';
+            isValid = false;
+        }
+
+        // Validate priority
+        if (priority === '') {
+            document.getElementById('priorityError').textContent = 'Please select the number of seats';
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    // Fetch bus names and IDs from the database and populate the combo box
+    window.onload = function() {
+        fetch('get_reserve_data.php')
+            .then(response => response.json())
+            .then(data => {
+                const busRouteSelect = document.getElementById('busRoute');
+                data.forEach(bus => {
+                    const option = document.createElement('option');
+                    option.value = bus.id;
+                    option.textContent = bus.highway_bus_name + ' - ' + bus.departing_date; // Concatenate route name and date
+                    busRouteSelect.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error fetching bus data:', error));
+    };
+
+   // Calculate total price based on the number of selected seats and fetched ticket price
+document.getElementById('priority').addEventListener('change', function() {
+    const numSeats = parseInt(this.value);
+
+    // Fetch the ticket price from the server
+    fetch('get_reserve_data.php')
+        .then(response => response.json()) 
+        .then(data => {
+            // Assuming the data returned is an array with only one item
+            const ticketPrice = parseFloat(data[0].ticket_price);
+            const totalPrice = numSeats * ticketPrice;
+            console.log("Total Price: " + totalPrice.toFixed(2)); // Display total price with two decimal places
+        })
+        .catch(error => console.error('Error fetching ticket price:', error));
+});
+
+
+</script>
+
+
+</body>
+</html>

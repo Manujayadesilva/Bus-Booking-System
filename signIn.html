@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login - Bus Tickets Booking</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .bus-icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .travelling-aid {
+            font-size: 2em;
+            font-weight: bold;
+        }
+       
+        .centered-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+         
+        .signin-form {
+            max-width: 600px;
+            width: 100%;
+            height: 700px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <img src="bus icon.webp" alt="Bus Icon" class="bus-icon">
+            <span class="text-white travelling-aid">Voyage Facile</span>
+        </div>
+    </header>
+
+    <div class="container mt-4">
+        <div class="login-container centered-form">
+            <div class="signin-form">
+                <form id="signinForm" method="post" action="login.php">
+                    <br><br>
+                    <center><h1 class="mb-4">User SignIn</h1></center>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+                    </div><br>
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                </form><br>
+                <div class="mt-3">
+                    <p>If you don't have an account yet, you can easily create one by signing up here. Registration only takes a few moments, and once you're signed up, you'll have access to all our features and services. Join our voyage facile today and start enjoying the benefits of membership!</p>
+                    <a href="signup.html" class="btn btn-secondary">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

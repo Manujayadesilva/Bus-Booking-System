@@ -1,0 +1,9 @@
+.about-details{
+    display:none !important;
+  }
+  
+  .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+      background: #07639c !important;
+      color: #ffffff !important;
+      font-weight: 700 !important;
+  }

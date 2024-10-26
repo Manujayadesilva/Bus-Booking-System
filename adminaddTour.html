@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Second Page</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+        .bus-icon {
+            width: 50px; 
+            height: 50px;
+            margin-right: 10px;
+        }
+        .travelling-aid {
+            font-size: 2em; 
+            font-weight: bold;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.8em;
+        }
+  </style>
+</head>
+<body>
+
+    <header class="navbar navbar-dark bg-dark">
+        <div class="container">
+             <img src="bus icon.webp" alt="Bus Icon" class="bus-icon">
+             <span class="text-white travelling-aid">Voyage Facile</span>
+             <h1 class="text-white"></h1>
+        </div>
+    </header>
+
+  <div class="container mt-3">
+    
+    <h2>Add Package</h2>
+    <form id="packageForm" action="save_package.php" method="POST" onsubmit="return validateForm()">
+      <div class="form-group">
+        <label for="packageNumber">Package Number:</label>
+        <input type="text" class="form-control" id="packageNumber" name="packageNumber">
+        <div class="error-message" id="packageNumberError"></div>
+      </div>
+      <div class="form-group">
+        <label for="packageName">Package Name:</label>
+        <input type="text" class="form-control" id="packageName" name="packageName">
+        <div class="error-message" id="packageNameError"></div>
+      </div>
+      <div class="form-group">
+        <label for="packageDestination">Package Destination:</label>
+        <input type="text" class="form-control" id="packageDestination" name="packageDestination">
+        <div class="error-message" id="packageDestinationError"></div>
+      </div>
+      <div class="form-group">
+        <label for="packagePrice">Package Price:</label>
+        <input type="text" class="form-control" id="packagePrice" name="packagePrice">
+        <div class="error-message" id="packagePriceError"></div>
+      </div>
+      <div class="form-group">
+        <label for="packageDuration">Package Duration:</label>
+        <input type="text" class="form-control" id="packageDuration" name="packageDuration">
+        <div class="error-message" id="packageDurationError"></div>
+      </div>
+      <div class="form-group">
+        <label for="packageDuration">Travellers:</label>
+        <input type="text" class="form-control" id="packagetravellers" name="packagetravellers">
+        <div class="error-message" id="packagetravellersError"></div>
+      </div>
+      <div class="form-group">
+        <label for="contactNumber">Contact Number:</label>
+        <input type="text" class="form-control" id="contactNumber" name="contactNumber">
+        <div class="error-message" id="contactNumberError"></div>
+      </div>
+      <button type="submit" class="btn btn-primary">Save Package Order Details</button>
+      <div><br><br>
+        <button type="button" class="btn btn-secondary" onclick="window.location.href = 'adminselection.html'">Back to Admin Selection</button>
+      </div><br><br><br><br>
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+        var packageNumber = document.getElementById("packageNumber").value;
+        var packageName = document.getElementById("packageName").value;
+        var packageDestination = document.getElementById("packageDestination").value;
+        var packagePrice = document.getElementById("packagePrice").value;
+        var packageDuration = document.getElementById("packageDuration").value;
+        var packagetravellers = document.getElementById("packagetravellers").value;
+        var contactNumber = document.getElementById("contactNumber").value;
+
+        // Reset error messages
+        document.querySelectorAll('.error-message').forEach(function(el) {
+            el.textContent = '';
+        });
+
+        var isValid = true;
+
+        if (!packageNumber) {
+            document.getElementById("packageNumberError").textContent = "Package Number is required.";
+            isValid = false;
+        }
+
+        if (!packageName) {
+            document.getElementById("packageNameError").textContent = "Package Name is required.";
+            isValid = false;
+        }
+
+        if (!packageDestination) {
+            document.getElementById("packageDestinationError").textContent = "Package Destination is required.";
+            isValid = false;
+        }
+
+        if (!packagePrice) {
+            document.getElementById("packagePriceError").textContent = "Package Price is required.";
+            isValid = false;
+        }
+
+        if (!packageDuration) {
+            document.getElementById("packageDurationError").textContent = "Package Duration is required.";
+            isValid = false;
+        }
+
+        if (!packagetravellers) {
+            document.getElementById("packagetravellersError").textContent = "Number of Travellers is required.";
+            isValid = false;
+        }
+
+        if (!contactNumber) {
+            document.getElementById("contactNumberError").textContent = "Contact Number is required.";
+            isValid = false;
+        }
+
+        return isValid;
+    }
+  </script>
+</body>
+</html>

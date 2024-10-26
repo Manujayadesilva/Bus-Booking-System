@@ -1,0 +1,114 @@
+.cookies-card {
+    width: 600px;
+    padding: 30px;
+    color: #1E2337;
+    position: fixed;
+    z-index: 9999;
+    bottom: 0;
+    left: 0;
+    box-shadow: 3px -5px 15px 5px #33333310;
+  }
+  
+  .radius--10px {
+    border-radius: 10px;
+  }
+  
+  .cookies-card.bg--default {
+    background-color: #fffdfb;
+  }
+  
+  .cookies-card__icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: #0e9e4c21;
+    font-size: 32px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: #0e9e4d;
+  }
+  
+  .cookies-card__content {
+    margin-bottom: 0;
+  }
+  
+  .cookies-btn {
+    color: #363636;
+    text-decoration: none;
+    padding: 6px 25px;
+    border: 1px solid #848484;
+    margin: 3px 5px;
+    display: inline-block;
+    border-radius: 25px;
+  }
+  
+  .cookies-btn:hover {
+    border-color: #0e9e4d;
+    color: #fff;
+    background-color: #0e9e4d;
+  }
+  
+  .cookies-card.style--lg,
+  .cookies-card.style--full {
+    width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .cookies-card.style--lg .cookies-card__content,
+  .cookies-card.style--full .cookies-card__content {
+    width: calc(100% - (55px + 220px));
+    padding: 0 25px;
+  }
+  .cookies-card.style--lg .cookies-card__btn,
+  .cookies-card.style--full .cookies-card__btn {
+    width: 220px;
+  }
+  
+  .cookies-card.style--full {
+    width: 100%;
+  }
+  
+  
+  .cookies-card.cookies--dark {
+    color: #EADFD8;
+    background-color: #2c493e;
+  }
+  
+  .cookies-card.cookies--dark .cookies-btn {
+    color: #EADFD8;
+  }
+  
+  .cookies-card.cookies--dark .cookies-btn:hover {
+    background-color: #343A50;
+    color: #EADFD8;
+  }
+  
+  .cookies-card.cookies--dark .cookies-card__icon {
+    background-color: #1E2337;
+  }
+  
+  @media (max-width: 1399px) {
+    .cookies-card.style--lg, .cookies-card  {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .cookies-card.style--lg,
+    .cookies-card.style--full {
+      display: block;
+    }
+    .cookies-card.style--lg .cookies-card__content,
+    .cookies-card.style--full .cookies-card__content {
+      width: 100%;
+      padding: 0;
+      margin-top: 25px;
+    }
+    .cookies-card.style--lg .cookies-card__btn,
+    .cookies-card.style--full .cookies-card__btn {
+      width: 100%;
+      margin-top: 20px;
+    }
+  }

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Loyalty Account</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .bus-icon {
+      width: 50px; 
+      height: 50px;
+      margin-right: 10px;
+    }
+    .travelling-aid {
+      font-size: 2em; 
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar navbar-dark bg-dark">
+    <div class="container">
+         <img src="bus icon.webp" alt="Bus Icon" class="bus-icon">
+         <span class="text-white travelling-aid">Voyage Facile</span>
+        
+    </div>
+</header>
+
+<div class="container mt-3">
+  <h2>Create Loyalty Account</h2>
+  <form id="loyaltyForm">
+    <div class="form-group">
+      <label for="userName">Name:</label>
+      <input type="text" class="form-control" id="userName" name="userName">
+    </div>
+    <div class="form-group">
+      <label for="userAge">Age:</label>
+      <input type="text" class="form-control" id="userAge" name="userAge">
+    </div>
+    <div class="form-group">
+      <label for="userPhone">Phone Number:</label>
+      <input type="text" class="form-control" id="userPhone" name="userPhone">
+    </div>
+    <div class="form-group">
+      <label for="userAddress">Address:</label>
+      <textarea class="form-control" id="userAddress" name="userAddress"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="userNID">NID:</label>
+      <input type="text" class="form-control" id="userNID" name="userNID">
+    </div>
+    <button type="button" class="btn btn-primary" onclick="makeLoyaltyAccount()">Make Loyalty Account</button>
+    <button type="button" class="btn btn-secondary" onclick="goBack()">Back</button>
+  </form>
+</div>
+
+<script>
+function makeLoyaltyAccount() {
+  // Placeholder for making loyalty account functionality
+  console.log('Making loyalty account for', document.getElementById('userName').value);
+  // Here you will typically send the form data to your server
+}
+
+function goBack() {
+  // Placeholder for back button functionality
+  window.history.back(); // Simple back function, or specify your target page
+}
+</script>
+
+</body>
+</html>

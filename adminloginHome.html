@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login Form</title>
+ 
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    body, html {
+      height: 100%;
+      margin: 0;
+    }
+    .login-container {
+      display: flex;
+      height: 100vh; /* Full height of the viewport */
+      width: 100vw; /* Full width of the viewport */
+      justify-content: center; /* Center the content horizontally */
+      align-items: center; /* Center the content vertically */
+    }
+    .wrapper {
+      width: 50%; /* Half of the container's width */
+      background: #fff;
+      padding: 30px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 2px solid #333; /* Add border */
+      border-radius: 10px; /* Rounded corners */
+    }
+    .wrapper h1 {
+      font-size: 36px;
+      text-align: center;
+    }
+    .input-box {
+      position: relative;
+      width: 100%;
+      height: 50px;
+      margin: 30px 0;
+    }
+    .input-box input {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      border: 2px solid rgba(0, 0, 0, .2);
+      border-radius: 40px;
+      font-size: 16px;
+      padding: 20px 45px 20px 20px;
+    }
+    .input-box input::placeholder {
+      color: #333;
+    }
+    .input-box i {
+      position: absolute;
+      right: 20px;
+      top: 30%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #333;
+    }
+    .wrapper .btn {
+      width: 100%;
+      height: 45px;
+      background: #333;
+      color: #fff;
+      border: none;
+      outline: none;
+      border-radius: 40px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="wrapper">
+      <form id="loginForm">
+        <h1>Admin Login</h1>
+        <div class="input-box">
+          <input type="text" placeholder="Username" id="username" required>
+          <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+          <input type="password" placeholder="Password" id="password" required>
+          <i class='bx bxs-lock-alt'></i>
+        </div>
+        <button type="submit" class="btn">Login</button>
+      </form>
+      <p id="message"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+      
+      if (username === 'admin' && password === 'password') {
+        window.location.href = "adminselection.html"; // Redirect on success
+      } else {
+        document.getElementById('message').innerText = 'Invalid username or password'; // Error message
+      }
+    });
+  </script>
+</body>
+</html>

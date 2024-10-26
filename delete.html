@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Items - Bus Tickets Booking</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .bus-icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .travelling-aid {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        /* Style for the login form container */
+        .login-container {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        /* Style for the custom rectangle container */
+        .custom-rectangle {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            height: 100%;
+        }
+
+        /* Style for the button inside the custom rectangle */
+        .btn-inside-rectangle {
+            width: 100%;
+            font-size: 1.5em; /* Larger font size */
+            padding: 20px; /* Increase padding */
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <img src="bus icon.webp" alt="Bus Icon" class="bus-icon">
+            <span class="text-white travelling-aid">Voyage Facile</span>
+            <h1 class="text-white"></h1>
+        </div>
+    </header>
+
+    <br><br><br><br>
+
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <!-- Button to Delete Highway Buses -->
+                <button type="button" class="btn btn-danger btn-lg btn-inside-rectangle" onclick="window.location.href='delete_highwaybus.html'">Delete Highway Buses</button>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-4">
+                <!-- Button to Delete Tour Buses -->
+                <button type="button" class="btn btn-danger btn-lg btn-inside-rectangle" onclick="window.location.href='delete_tourbus.html'">Delete Tour Buses</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

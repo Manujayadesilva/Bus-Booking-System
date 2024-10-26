@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popup Message</title>
+  <style>
+    /* Optional CSS for styling the popup */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Button to trigger the popup -->
+<button onclick="showPopup()">Show Popup</button>
+
+<!-- Popup message -->
+<div id="popup" class="popup">
+  <h2>Hello, this is a popup message!</h2>
+  <p>This is some content inside the popup.</p>
+  <button onclick="hidePopup()">Close</button>
+</div>
+
+<script>
+  // JavaScript functions to show and hide the popup
+  function showPopup() {
+    document.getElementById('popup').style.display = 'block';
+  }
+
+  function hidePopup() {
+    document.getElementById('popup').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>

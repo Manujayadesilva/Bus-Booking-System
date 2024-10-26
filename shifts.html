@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Second Page</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+        .bus-icon {
+            width: 50px; 
+            height: 50px;
+            margin-right: 10px;
+        }
+        .travelling-aid {
+            font-size: 2em; 
+            font-weight: bold;
+        }
+  </style>
+</head>
+<body>
+
+<header class="navbar navbar-dark bg-dark">
+    <div class="container">
+         <img src="bus icon.webp" alt="Bus Icon" class="bus-icon">
+         <span class="text-white travelling-aid">Voyage Facile</span>
+         <h1 class="text-white">(Admin View)</h1>
+    </div>
+</header>
+
+<div class="container mt-3">
+    <br><h2>Add Shifts</h2><br><br>
+    <form action="save_shift.php" method="POST" id="shiftForm">
+      <div class="form-group">
+            <label for="busRoute">Bus Name/Route:</label>
+            <select class="form-control" id="busRoute" name="busRoute">
+                <!-- Options will be dynamically added here -->
+            </select>
+        </div>
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="date" class="form-control" id="date" name="date">
+      </div>
+      <div class="form-group">
+        <label for="time">Time:</label>
+        <input type="text" class="form-control" id="time" name="time">
+      </div>
+      <div class="form-group">
+        <label for="seatsAvailable">Number of Available Seats:</label>
+        <input type="text" class="form-control" id="seatsAvailable" name="seatsAvailable">
+      </div>
+      <button type="submit" class="btn btn-primary">Save Shift</button>
+      <a href="admin_selection.html" class="btn btn-secondary">Back</a>
+    </form>
+  </div>
+ <script>
+    // Fetch bus names and IDs from the database and populate the combo box
+    window.onload = function() {
+      fetch('get_bus_data.php')
+        .then(response => response.json())
+        .then(data => {
+          const busRouteSelect = document.getElementById('busRoute');
+          // Loop through the data and add options to the select element
+          Object.keys(data).forEach(busName => {
+            const option = document.createElement('option');
+            option.value = busName; // Set the value to the highway_bus_name
+            option.textContent = busName; // Set the text content to the highway_bus_name
+            busRouteSelect.appendChild(option);
+          });
+        })
+        .catch(error => console.error('Error fetching bus data:', error));
+    };
+ </script>
+
+</body>
+</html>
